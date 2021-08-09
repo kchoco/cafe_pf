@@ -1,0 +1,23 @@
+<div class="container">
+<h3 class="m-4">マイページ</h3>
+  <div class="myinformation ">
+    <label>登録情報</label>
+    <%= link_to '編集する', edit_user_path(@user) ,class: 'btn btn-success ml-2'%>
+    <table class="table table-bordered my-3">
+      <thead>
+        <tr>
+          <th style="width: 30%">nickname</th>
+          <th style="width: 70%"><%= @user.nickname %>
+        </tr>
+        <tr>
+          <th style="width: 30%">メールアドレス</th>
+          <th style="width: 70%"><%= @user.email %></th>
+        </tr>
+        <tr>
+          <th style="width: 30%">プロフィール</th>
+          <th style="width: 70%"><%= @user.profile %></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
