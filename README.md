@@ -1,24 +1,3 @@
-# README
+# uncafe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+un caféとはフランス語で「コーヒー」や「カフェ」を意味します。自分自身のお気に入りのカフェやコーヒーを発信していってほしい、という願いからこの名前を付けました。 このアプリを使用して、全国さらには全世界の素敵なカフェを探すことができます。会員制で、会員外の人間からは投稿が見れないようになっているので、安心して投稿していただけます。 自分がそこに存在しているような気分になれるようなアプリをコンセプトに、コーヒーやカフェで提供されている料理、カフェから見える景色を画像で投稿することができます。 また、投稿する際にタグを6つの中から選択してつけることが可能です。タイムラインのサイドバーにはタグ一覧があり、そこから投稿されている記事を絞ることも可能になっています。他にも訪れたカフェを評価する制度もあります。 またコメント、いいね機能があり他者の投稿を評価することができます。
