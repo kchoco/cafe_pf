@@ -9,6 +9,9 @@ resources :users, only: [:show, :edit, :update] do
       end
   end
 
-resources :post_images, only: [:new, :create, :index, :show, :destroy]
+resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+  resource :favorites, only: [:create, :destroy]
+
+end
 
 end
