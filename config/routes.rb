@@ -8,4 +8,7 @@ resources :users, only: [:show, :edit, :update] do
         patch :withdraw
       end
   end
+
+resources :post_images, only: [:new, :create, :index, :show, :destroy]
+
 end
