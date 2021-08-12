@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_images, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def active_for_authentication?
     super && (self.is_valid == false)
