@@ -20,8 +20,8 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <li><%= link_to ' マイページ',user_path(current_user),class: "btn btn-outline-dark r-3" %></li>
-          <li><div class="ml-5"><%#= link_to '商品一覧', items_path,       class: "btn btn-outline-dark" %></div></li>
+          <li><%= link_to ' Mypage',user_path(current_user),class: "btn btn-outline-dark r-3" %></li>
+          <li><div class="ml-5"><%= link_to 'PostImage', new_post_image_path, class: "btn btn-outline-dark r-3" %></div></li>
           <li><div class="ml-5"><%#= link_to 'カート', cart_items_path , class: "btn btn-outline-dark" %></div></li>
           <li><div class="ml-5"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: "btn btn-outline-dark" %></div></li>
         <% else %>
