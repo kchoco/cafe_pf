@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :post_images, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   def active_for_authentication?
     super && (self.is_valid == false)
