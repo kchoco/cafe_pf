@@ -9,6 +9,9 @@ resources :users, only: [:show, :edit, :update] do
         get :unsubscribe
         patch :withdraw
       end
+      resource :relationships, only: [:create, :destroy]
+       get 'followings' => 'relationships#followings', as: 'followings'
+       get 'followers' => 'relationships#followers', as: 'followers'
   end
 
 resources :post_images, only: [:new, :create, :index, :show, :destroy] do
