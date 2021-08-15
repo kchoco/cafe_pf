@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'post_comments/create'
-  get 'post_comments/destroy'
+
   devise_for :users
 root to: 'homes#top'
+
 
 resources :users, only: [:show, :edit, :update] do
       member do
@@ -18,5 +18,7 @@ resources :post_images, only: [:new, :create, :index, :show, :destroy] do
   resource :favorites, only: [:create, :destroy]
   resources :post_comments, only: [:create, :destroy]
 end
+
+get 'search' => 'post_images#search'
 
 end
