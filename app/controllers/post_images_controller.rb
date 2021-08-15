@@ -23,6 +23,12 @@ class PostImagesController < ApplicationController
   def destroy
   end
 
+  def search
+    @post_images = PostImage.search(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
+  end
+
 
 private
 
