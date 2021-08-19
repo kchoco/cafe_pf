@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
 #退会処理
   def active_for_authentication?
-    super && (self.is_valid == false)
+    super && self.is_valid
   end
 
   #フォロー機能

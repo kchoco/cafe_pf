@@ -33,6 +33,11 @@
     </div>
   </nav>
 </header>
+  <!-- NOTE フラッシュメッセージを表示させてい場合つかってね -->
+  <%# flash.each do |message_type, message| %>
+    <%#= message_type %>
+    <%#= message %>
+  <%# end %>
     <%= yield %>
   </body>
 </html>
