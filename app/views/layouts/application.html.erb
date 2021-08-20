@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   </head>
 
   <body>
@@ -23,9 +24,11 @@
           <li><%= link_to ' Mypage',user_path(current_user),class: "btn btn-outline-dark r-3" %></li>
           <li><div class="ml-5"><%= link_to 'PostImage', new_post_image_path, class: "btn btn-outline-dark r-3" %></div></li>
           <li><div class="ml-5"><%= link_to 'Timeline', post_images_path , class: "btn btn-outline-dark" %></div></li>
+          <li><div class="ml-5"><%= link_to 'Contact', new_contact_path, class: 'btn btn-outline-dark'%></div></li>
           <li><div class="ml-5"><%= link_to 'Log out', destroy_user_session_path, method: :delete,class: "btn btn-outline-dark" %></div></li>
         <% else %>
           <li><div class="ml-5"><%= link_to'About', about_path, class: "btn btn-outline-dark" %></div></li>
+          <li><div class="ml-5"><%= link_to 'Contact', new_contact_path, class: 'btn btn-outline-dark'%></div></li>
           <li><div class="ml-5"><%= link_to'Sign up', new_user_registration_path, class: "btn btn-outline-dark" %></div></li>
           <li><div class="ml-5"><%= link_to'Log in', new_user_session_path , class: "btn btn-outline-dark" %></div></li>
         <% end %>

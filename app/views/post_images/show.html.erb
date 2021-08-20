@@ -1,10 +1,23 @@
-<div class="post-body">
-  <%= attachment_image_tag @post_image, :image %>
-  <p>ショップ名：<%= @post_image.title %></p>
-  <p>説明：<%= @post_image.introduction %></p>
-  <%= link_to user_path do %>
-  <p>ユーザーネーム：<%= @post_image.user.name %></p>
+<main>
+  <div class = "container">
+    <div class="post-body">
+      <h2><%= @post_image.title %></h2>
+      <div class="media">
+   <div class="ml-4"><%= attachment_image_tag @post_image, :image, size: "600x400" %></div>
+   <div class="media-body">
+     <div class="ml-3">
+  <h3><%= link_to user_path(@post_image.user) do %>
+  <p><%= @post_image.user.nickname %></p>
+  <% end %></h3>
+  </div>
+  <div class = "border"></div>
+  <div class="ml-5">
+  <p></p><%= @post_image.introduction %></p>
+  <%= link_to user_path(@post_image.user) do %>
   <% end %>
+    </div>
+    </div>
+</div>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
 
       <div class="comments">

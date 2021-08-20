@@ -1,35 +1,44 @@
-<div class="container">
-<h3 class="m-4">マイページ</h3>
-  <div class="myinformation ">
-    <label>登録情報</label>
-    <%= link_to '編集する', edit_user_path(@user) ,class: 'btn btn-success ml-2'%>
-    <%= link_to 'お問合わせ', new_contact_path, class: 'btn btn-success ml-2'%>
-    <table class="table table-bordered my-3">
-      <thead>
-        <tr>
-          <th style="width: 30%">nickname</th>
-          <th style="width: 70%"><%= @user.nickname %>
-        </tr>
-        <tr>
-          <th style="width: 30%">メールアドレス</th>
-          <th style="width: 70%"><%= @user.email %></th>
-        </tr>
-        <tr>
-          <th style="width: 30%">プロフィール</th>
-          <th style="width: 70%"><%= @user.profile %></th>
-        </tr>
-        <% if current_user != @user %>
-        <% if current_user.following?(@user) %>
-  <%= link_to "Unfollow", user_relationships_path(@user.id), method: :delete %>
-<% else %>
-  <%= link_to "Follow", user_relationships_path(@user.id), method: :post %>
-<% end %>
-<% end %>
+<main>
+  <div class="profile-container">
+    <div class="container">
+      <h1>Mypage</h1>
+      <div class="media mt-3">
+        <img class="d-flex ml-5"><%= attachment_image_tag @user, :profile_image, fallback: "noimage.png", size:"150" %>
+          <div class="media-body">
+             <h5 class="ml-5"><%= @user.nickname %>
+             <% if @user == current_user %>
+               <%= link_to 'edit', edit_user_path(@user) ,class: 'btn btn-outline-secondary'%>
+             <% end %></h5>
 
-follow:<%= link_to @user.followings.count, user_followings_path(current_user), class: 'btn btn-success ml-2' %>
-follower:<%= link_to @user.followers.count, user_followers_path(current_user), class: 'btn btn-success ml-2' %>
+             <% if current_user != @user %>
+             <% if current_user.following?(@user) %>
+               <%= link_to "Unfollow", user_relationships_path(@user.id), method: :delete,class: 'btn btn-outline-secondary' %>
+             <% else %>
+               <%= link_to "Follow", user_relationships_path(@user.id), method: :post,class: 'btn btn-outline-secondary' %>
+            <% end %>
+            <% end %>
+            <div class="ml-5">
+            <p>follow:<%= link_to @user.followings.count, user_followings_path(current_user) %>/follower:<%= link_to @user.followers.count, user_followers_path(current_user) %></p>
+            <p><%= @user.profile %></p>
+            </div>
+          </div>
+      </div>
+<div class="border-top" style="padding:10px;"></div>
 
-      </thead>
-    </table>
+<div class="row">
+  <% @post_images.each do |post_image| %>
+  <div class="col-md-4">
+    <div>
+      <div class="mt-md-5">
+        <%= link_to post_image_path(post_image.id) do %>
+        <%= attachment_image_tag post_image, :image, size:"280", class:"image-s"  %>
+        <% end %>
+        </div>
+    </div>
   </div>
+  <% end %>
 </div>
+
+
+  </div>
+</main>

@@ -17,8 +17,13 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+//googlefont読み込み
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Shippori+Mincho&display=swap');
 
+
+//top画像フレーム
 .c{
 　position: flex;
   margin: 15% auto 0;
@@ -31,6 +36,7 @@
   box-shadow: 0 4px 20px #999;
 }
 
+//基本機能
 footer{
     width: 100%;
     height: 120px;
@@ -38,10 +44,10 @@ footer{
     margin-top: 10%;
     background: #F4F0EC;
     line-height: 120px;
-    font-family: 'Shippori Mincho', serif;
+    font-family: 'Bad Script', cursive;
 }
 main{
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 h1{
@@ -50,8 +56,25 @@ h1{
   width: 20%;
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 20%;
 }
 
+h2{
+  font-family: 'Bad Script', cursive;
+  background: linear-gradient(transparent 50%, #F4F0EC 50%);
+  width: 30%;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20%;
+}
+
+h3{
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+}
+
+
+//topページwelcome用のボックス
 .box{
     font-family: 'Bad Script', cursive;
     position: absolute;
@@ -67,8 +90,37 @@ h1{
     text-align: center;
 }
 
+//aboutの説明用ボックス
 .box2{
     width: 70%;
     font-family: 'Shippori Mincho', serif;
     margin: 0 auto;
+}
+//devise関係のボックス
+.box3{
+    width: 50%;
+    height: 100%;
+    font-family: 'Shippori Mincho', serif;
+    margin: 0 auto;
+    background: #FAF0E6;
+    box-shadow: 10px 10px #E7C9A9;
+    text-align: center;
+    line-height: 2.5;
+}
+
+//関係のボックス
+.box4{
+    border: 0.5px solid #222;
+    width: 40%;
+    height: 30%;
+    font-family: 'Shippori Mincho', serif;
+    margin: 0 auto;
+    line-height: 1.5;
+    padding: 1em;
+    margin-bottom: 20px;
+}
+
+//リンクカラー
+a{
+    color: #666;
 }

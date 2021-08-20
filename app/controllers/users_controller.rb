@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @post_images = @user.post_images.reverse_order
   end
 
   def edit
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :nickname, :email, :profile, :profile_image_id)
+    params.require(:user).permit(:name, :nickname, :email, :profile, :profile_image)
   end
 end
