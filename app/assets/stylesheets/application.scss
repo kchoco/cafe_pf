@@ -14,6 +14,61 @@
  *= require_self
  */
 
- @import "bootstrap";
- @import 'font-awesome-sprockets';
- @import 'font-awesome';
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Shippori+Mincho&display=swap');
+
+.c{
+　position: flex;
+  margin: 15% auto 0;
+  height: 500px;
+  width :80%;
+  border-top: 25px solid rgba(244, 240, 236, 0.8);
+  border-left: 25px solid rgba(244, 240, 236, 0.8);
+  border-bottom: 25px solid rgba(244, 240, 236, 0.8);
+  border-right: 25px solid rgba(244, 240, 236, 0.8);
+  box-shadow: 0 4px 20px #999;
+}
+
+footer{
+    width: 100%;
+    height: 120px;
+    text-align: center;
+    margin-top: 10%;
+    background: #F4F0EC;
+    line-height: 120px;
+    font-family: 'Shippori Mincho', serif;
+}
+main{
+    margin-top: 20%;
+}
+
+h1{
+  font-family: 'Bad Script', cursive;
+  background: linear-gradient(transparent 50%, #F4F0EC 50%);
+  width: 20%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.box{
+    font-family: 'Bad Script', cursive;
+    position: absolute;
+    z-index: 100;
+    background: rgba(0,0,0,0.5);
+    margin: 0 auto;
+    margin-top: 15%;
+    width: 50%;
+    height: 15%;
+    color: #fefefe;
+    font-size: 35px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.box2{
+    width: 70%;
+    font-family: 'Shippori Mincho', serif;
+    margin: 0 auto;
+}

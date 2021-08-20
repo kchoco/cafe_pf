@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+//= require jquery.raty.js
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
@@ -19,3 +20,16 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function () {
+$(function() {
+    $('.a').slick({
+        dots: true,
+        fade: true,
+        speed: 800,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        infinite: true
+    });
+});
+});
