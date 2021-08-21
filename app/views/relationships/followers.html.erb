@@ -1,22 +1,25 @@
-<h2>Follower Users</h2>または<h2>Follow Users</h2>
+<main>
+  <div class = "container">
+    <h2>Follower Users</h2>
+
+
 <% if @users.exists? %>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.nickname %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-      </tr>
+<% @users.each do |user| %>
+<div class = "box6">
+  <div class="media">
+    <%= link_to user_path(user) do %>
+   <p><img class="rounded-circle d-flex ml-2"<%= attachment_image_tag user, :profile_image, fallback: "noimage.png", size:"80" %></p>
+   <div class="media-body">
+     <p><%= user.nickname %><p>
+       <% end %>
+           <p><%= user.profile %></p>
+           </div>
+           </div>
+           </div>
     <% end %>
-  </tbody>
-</table>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
+</div>
+    </div>
+</main>

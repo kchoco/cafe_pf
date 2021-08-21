@@ -5,10 +5,10 @@
       <div class="media mt-3">
         <img class="d-flex ml-5"><%= attachment_image_tag @user, :profile_image, fallback: "noimage.png", size:"150" %>
           <div class="media-body">
-             <h5 class="ml-5"><%= @user.nickname %>
+             <h3 class="ml-5"><%= @user.nickname %>
              <% if @user == current_user %>
                <%= link_to 'edit', edit_user_path(@user) ,class: 'btn btn-outline-secondary'%>
-             <% end %></h5>
+             <% end %>
 
              <% if current_user != @user %>
              <% if current_user.following?(@user) %>
@@ -16,13 +16,14 @@
              <% else %>
                <%= link_to "Follow", user_relationships_path(@user.id), method: :post,class: 'btn btn-outline-secondary' %>
             <% end %>
-            <% end %>
+            <% end %></h3>
             <div class="ml-5">
-            <p>follow:<%= link_to @user.followings.count, user_followings_path(current_user) %>/follower:<%= link_to @user.followers.count, user_followers_path(current_user) %></p>
+            <p>follow:<%= link_to @user.followings.count, user_followings_path(@user) %>/follower:<%= link_to @user.followers.count, user_followers_path(@user) %></p>
             <p><%= @user.profile %></p>
             </div>
           </div>
       </div>
+      <br>
 <div class="border-top" style="padding:10px;"></div>
 
 <div class="row">
