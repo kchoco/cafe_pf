@@ -1,15 +1,39 @@
-<%= form_for(@contact, url: confirm_path) do |f| %>
+<main>
+  <div class = "container">
+    <h2>Contact</h2>
+      <% if @contact.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+    <%= form_for(@contact, url: confirm_path) do |f| %>
   <div class="form-group">
     <%= f.label :name, 'お名前*' %>
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :message, 'メッセージ*' %>
+    <%= f.label :email, 'メールアドレス*' %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, '用件' %>
+    <%= f.text_field :subject, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, 'お問い合わせ内容*' %>
     <%= f.text_area :message, size: '10x10', class: 'form-control' %>
   </div>
 
   <div>
-    <%= f.submit '入力内容確認' %>
+    <%= f.submit '入力内容確認', class: "btn btn-outline-dark" %>
   </div>
 <% end %>
+</div>
+</main>

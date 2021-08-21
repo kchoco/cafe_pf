@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
+
 #画像投稿機能
   has_many :post_images, dependent: :destroy
 #いいね機能

@@ -1,33 +1,85 @@
-<div class="post-body">
-  <%= attachment_image_tag @post_image, :image %>
-  <p>ショップ名：<%= @post_image.title %></p>
-  <p>説明：<%= @post_image.introduction %></p>
-  <%= link_to user_path do %>
-  <p>ユーザーネーム：<%= @post_image.user.name %></p>
-  <% end %>
-  <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+<main>
+  <!-- 画像表示 -->
+  <div class = "container">
+    <div class="post-body">
+      <h2><%= @post_image.title %></h2>
+      <div class="media">
+        <div class="ml-4"><%= attachment_image_tag @post_image, :image, size: "600x400" %></div>
+        <!-- ユーザ投稿情報 -->
+        <div class="media-body">
+          <div class="ml-3">
+            <h3><%= link_to user_path(@post_image.user) do %>
+            <!-- ユーザ画像表示 -->
+            <p><%= @post_image.user.nickname %></p>
+            <% end %>
+            </h3>
+            <div id="favorite_buttons_<%= @post_image.id %>">
+              <%= render'favorites/favorite', post_image: @post_image %>
+            </div>
+            <p style="text-align: right">
+              <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+            </p>
+          </div>
 
+          <div class = "border"></div>
+
+          <div class="ml-5">
+            <p><%= safe_join(@post_image.introduction.split("\n"),tag(:br)) %></p>
+            <%= link_to user_path(@post_image.user) do %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class = "border"></div>
+
+<!-- 地図機能 -->
+      <h4>Map</h4>
+
+      <br>
+      <div class = "border"></div>
+
+<!-- コメント機能　フォーム-->
+      <h4>Comments</h4>
+      <div class="new-comment">
+        <%= form_with model:[@post_image, @post_comment] do |f| %>
+        <%= f.text_area :comment, size: "30x3",placeholder: "コメントをここに" %>
+        <button type="submit" class="button1">
+          <i class="far fa-paper-plane"></i>送信
+        </button>
+        <% end %>
+      </div>
+      <br>
+      <br>
+<!--　コメント機能一覧表示 -->
       <div class="comments">
-<p>コメント件数：<%= @post_image.post_comments.count %></p>
-<% @post_image.post_comments.each do |post_comment| %>
-  <p><%#= image_tag('sample-author1.jpg') %></p>
-  <%= post_comment.user.name %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-  <% if post_comment.user == current_user %>
-  <div class="comment-delete">
-    <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
-  </div>
-  <% end %>
-<% end %>
+        <% @post_image.post_comments.each do |post_comment| %>
+        <div class = "box5">
+
+        <div class="media">
+          <p><img class="rounded-circle d-flex ml-2"<%= attachment_image_tag post_comment.user, :profile_image, fallback: "noimage.png", size:"55" %></p>
+          <div class="media-body">
+          <div class="ml-2"><br>
+          <%#= link_to user_path(@comment.user) do %>
+          <%= post_comment.user.nickname %>
+          <%# end %>
+          </div>
+          </div>
+        </div>
+        <div class = "border"></div>
+        <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+          <% if post_comment.user == current_user %>
+            <div class="comment-delete">
+              <p style="text-align: right">
+                <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, class: "btn btn-outline-danger" %>
+            </div>
+        </div>
+          <% end %>
+        <% end %>
+
+
+
 </div>
-<div class="new-comment">
-<%= form_with model:[@post_image, @post_comment] do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
 </div>
-<div id="favorite_buttons_<%= @post_image.id %>">
-  <%= render'favorites/favorite', post_image: @post_image %>
-</div>
-</div>
+</main>
 

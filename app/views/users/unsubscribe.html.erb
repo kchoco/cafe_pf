@@ -1,3 +1,10 @@
-<h1>退会しますか？</h1>
-<%= link_to '退会しない', user_path(@user) %>
-    <%= link_to "退会する", withdraw_user_path(@user), method: :patch %>
+<main>
+    <div class = "container">
+        <h1>withdrawal</h1>
+        <div class = "box2">
+          <p>Un cafeから退会する場合は退会するボタンを押してください。退会しない場合は退会しないボタンを押すか、、ブラウザバックをしてください。</p>
+          <%= link_to '退会しない', user_path(@user), class: 'btn btn-outline-secondary' %>
+          <%= link_to "退会する", withdraw_user_path(@user), method: :patch, class: 'btn btn-outline-danger' %>
+        </div>
+    </div>
+</main>

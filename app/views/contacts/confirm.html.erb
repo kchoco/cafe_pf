@@ -1,29 +1,33 @@
-<table>
-  <tbody>
-    <tr>
-      <td class="text-center" style="width: 30%;">お名前</td>
-      <td><%= @contact.name %></td>
-    </tr>
-    <tr>
-      <td class="text-center">メッセージ</td>
-      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-    </tr>
-  </tbody>
-</table>
+<main>
+  <div class = "container">
+  <h2>Contact</h2>
+  <div class = "box6">
+    <%= form_for(@contact, url: confirm_path) do |f| %>
+    <%= f.label :name, 'お名前' %>
+    <p>>><%= @contact.name %></p>
+    <%= f.label :email, 'メールアドレス' %>
+    <p>>><%= @contact.email %></p>
+    <%= f.label :subject, '用件' %>
+    <p>>><%= @contact.subject %></p>
+    <%= f.label :message, 'お問い合わせ内容' %>
+    <p>>><%= @contact.message %></p>
+    <% end %>
 
+
+<center>
 <%= form_for(@contact) do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
-  <%= f.hidden_field :phone_number %>
   <%= f.hidden_field :subject %>
   <%= f.hidden_field :message %>
-  <div><%= f.submit '送信' %></div>
-<% end %>
+  <div><%= f.submit '送信', class: "btn btn-outline-dark" %></div>
+<% end %><br>
 <%= form_for @contact, url: back_path do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
-  <%= f.hidden_field :phone_number %>
   <%= f.hidden_field :subject %>
   <%= f.hidden_field :message %>
-  <div><%= f.submit '入力画面に戻る' %></div>
+  <div><%= f.submit '入力画面に戻る', class: "btn btn-outline-dark" %></div>
 <% end %>
+</center>
+</div>

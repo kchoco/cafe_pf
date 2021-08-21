@@ -1,17 +1,47 @@
-<div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, value: @keyword %>
-  <%= f.submit "検索" %>
-  <% end %>
-</div>
 
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-  <%= attachment_image_tag post_image, :image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%#= image_tag('sample-author1.jpg') %></p>
-  <p>ショップ名：<%= post_image.title %></p>
-  <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
-</div>
+<main>
+  <div class = "container1">
+  <div class = "container">
+    <h5>Timeline</h5>
+    <p style="text-align: right">
+    <div class="search-form">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+    <button type="submit" class="button1">
+  <i class="fas fa-search"></i>検索
+</button>
+    <% end %>
+ 　　</div>
+ 　　 　<% @post_images.each do |post_image| %>
+ 　<div>
+ 　  <div class = "box4">
+ 　    <div class="media">
+ 　      <p><img class="rounded-circle d-flex ml-2"<%= attachment_image_tag post_image.user, :profile_image, fallback: "noimage.png", size:"80" %></p>
+ 　      <div class="ml-1">
+ 　      <%= post_image.user.nickname %>
+ 　      <%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %><br><br>
+ 　      <%= post_image.title %>
+        </div>
+      </div>
+      <div class ="border"></div><br>
+      <center><%= link_to post_image_path(post_image.id) do %>
+      <%= attachment_image_tag post_image, :image, size: "300x200" %></center>
+      <% end %>
+      <div class="ml-4">
+      <p style="text-align: right">
+        <%= link_to "#{post_image.post_comments.count}", post_image_path(post_image.id), class: "far fa-comments" %></div>
+      </p>
+    </div>
+  </div>
 <% end %>
+    </div>
+      <div class="sidebar">
+    <div class="sidebar__item sidebar__item--fixed">
+      <h4>Ranking</h4>
+      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br>
+      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br><br>
+      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br><br>
+    </div>
+    </div>
+</div>
+</main>
