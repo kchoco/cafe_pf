@@ -3,6 +3,8 @@ class PostImage < ApplicationRecord
     belongs_to :user
     attachment :image
 
+    validates :image, {presence: true}
+
     has_many :favorites, dependent: :destroy
     has_many :post_comments, dependent: :destroy
 
@@ -13,5 +15,9 @@ class PostImage < ApplicationRecord
   def self.search(keyword)
   where(["title like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
   end
+
+  #タグ付け
+  acts_as_taggable
+  acts_as_taggable_on :skills, :interests
 
 end
