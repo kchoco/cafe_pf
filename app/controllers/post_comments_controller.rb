@@ -12,7 +12,11 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
+    @post_image = PostImage.find(params[:post_image_id])
+    post_comment = @post_image.post_comments.find(params[:id])
+    post_comment.destroy
+
+    #PostComment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
   end
 
   private

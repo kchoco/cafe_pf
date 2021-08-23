@@ -1,0 +1,23 @@
+<% post_image.post_comments.each do |post_comment| %>
+  <% post_comment_user = post_comment.user %>
+                <div class = "box5">
+  		<%= link_to user_path(post_comment_user), class: "user_#{post_comment_user.id}" do %>
+    		<div class="media">
+          <p><%= attachment_image_tag post_comment.user, :profile_image, fallback: "noimage.png", size:"55", class: "rounded-circle d-flex ml-2" %></p>
+          <div class="media-body">
+          <div class="ml-2"><br>
+    		<%= post_comment_user.name %>
+  		<% end %>
+  		</div>
+</div>
+</div>
+<div class = "border"></div>
+<%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+  	<% if current_user == post_comment_user %>
+  	            <div class="comment-delete">
+              <p style="text-align: right">
+    	<%= link_to 'Destroy', post_image_post_comment_path(post_comment.post_image_id, post_comment.id), class: "btn btn-outline-danger", method: :delete, remote: true %>
+            </div>
+        </div>
+  	<% end %>
+<% end %>
