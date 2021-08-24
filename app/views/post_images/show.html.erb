@@ -8,28 +8,70 @@
         <!-- ユーザ投稿情報 -->
         <div class="media-body">
           <div class="ml-3">
-            <h3><%= link_to user_path(@post_image.user) do %>
-            <!-- ユーザ画像表示 -->
-            <%= attachment_image_tag @post_image.user, :profile_image, fallback: "noimage.png", size:"80", class: "rounded-circle d-flex ml-2" %><%= @post_image.user.nickname %>
-            <% end %>
-            </h3>
-            <div id="favorite_buttons_<%= @post_image.id %>">
-              <%= render'favorites/favorite', post_image: @post_image %>
-            </div>
-            <p style="text-align: right">
-              <%= @post_image.created_at.strftime('%Y/%m/%d') %>
-              <% if @post_image.user == current_user %>
-                <%= link_to "削除", post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
-              <% end %>
-            </p>
+            <table>
+              <tr>
+                <td>
+                  <!-- ユーザ情報と投稿内容 -->
+                  <%= link_to user_path(@post_image.user) do %>
+                  <%= attachment_image_tag @post_image.user, :profile_image, fallback: "noimage.png", size:"80", class: "rounded-circle d-flex ml-2" %>
+            　　　　<% end %>
+          　     </td>
+                <td>
+                  <%= link_to user_path(@post_image.user) do %>
+                  <%= @post_image.user.nickname %>
+                  <% end %>
+                </td>
+                <td>
+                  <div id="favorite_buttons_<%= @post_image.id %>">
+                  <%= render'favorites/favorite', post_image: @post_image %>
+                  </div>
+                </td>
+                <td>
+                  <div class="ml-5"><br>
+                    <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+                    <%= @post_image.tag_list %>
+                    <% if @post_image.user == current_user %>
+                    <%= link_to "Destroy", post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
           </div>
 
           <div class = "border"></div>
 
           <div class="ml-5">
-            <p><%= safe_join(@post_image.introduction.split("\n"),tag(:br)) %></p>
-            <%= link_to user_path(@post_image.user) do %>
-            <% end %>
+            <p><%= safe_join(@post_image.introduction.split("\n"),tag(:br)) %>
+
+            <!-- h星と評価 -->
+            <table>
+              <tr>
+                <td>
+                  <div id="star-rate-<%= @post_image.id %>"></div>
+                </td>
+                <td>
+                  <h6 class="mb-3"><br><%= @post_image.rate %>点</h6>
+                </td>
+              </tr>
+            </table>
+
+
+          <!--星評価-->
+
+          <script>
+          $('#star-rate-<%= @post_image.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @post_image.rate %>,
+          });
+          </script>  </p>
+
           </div>
         </div>
       </div>
@@ -44,10 +86,6 @@
 
 <!-- コメント機能　フォーム-->
       <h4>Comments</h4>
-
-      <br>
-      <br>
-<!--　コメント機能一覧表示 -->
 
   <%= form_with model:[@post_image,@post_comment] do |f| %>
   <%= f.text_area :comment, size:"60x5",placeholder: "コメント" %>
