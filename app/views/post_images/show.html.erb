@@ -29,7 +29,9 @@
                 <td>
                   <div class="ml-5"><br>
                     <%= @post_image.created_at.strftime('%Y/%m/%d') %>
-                    <%= @post_image.tag_list %>
+                    <% @post_image.tag_list.each do |tag| %>
+ <span class = "badge.badge-primary.mr-1.p-2"><%= tag %></span>
+ <% end %>
                     <% if @post_image.user == current_user %>
                     <%= link_to "Destroy", post_image_path(@post_image), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
                     <% end %>
@@ -45,7 +47,7 @@
           <div class="ml-5">
             <p><%= safe_join(@post_image.introduction.split("\n"),tag(:br)) %>
 
-            <!-- h星と評価 -->
+            <!-- 星と評価 -->
             <table>
               <tr>
                 <td>
@@ -80,6 +82,11 @@
 
 <!-- 地図機能 -->
       <h4>Map</h4>
+        <div class="show__address">
+          <%= @post_image.spot.address %>
+       </div>
+       <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
+
 
       <br>
       <div class = "border"></div>

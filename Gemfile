@@ -74,3 +74,7 @@ group :production do
   gem 'mysql2'
 end
 gem 'acts-as-taggable-on'
+
+gem "gmaps4rails"
+gem "geocoder"
+gem "gon"

@@ -5,7 +5,7 @@
     <%= render 'layouts/error_messages', model: @post_image %>
 
     <div class = "box2">
-      <%= form_with model: @post_image, local:true do |f| %>
+      <%= form_with model: @post_image, local:true, multipart: true do |f| %>
       <h6>Image</h6>
         <%= f.attachment_field :image %>
       <h6>Title</h6>
@@ -16,16 +16,21 @@
         <%= f.label :rate,'Evaluation: ', class:'col-md-3 col-form-label' %>
         <%= f.hidden_field :rate, id: :review_star %>
       </div>
-  <div class="form-group">
-    <%= f.label :post_image, :tag_list %>
-    <%= f.text_field :tag_list, value: @post_image.tag_list.join(','), class: "form-control" %>
-  </div>
-  <div class="pull-right">
-    <%= f.submit '登録する', class: "btn btn-info" %>
-  </div>
-        <%= f.submit '投稿', class: "btn btn-outline-dark"  %>
-     </div>
-   </div>
+        <div class="form-group">
+          <%= f.label :tag_list %>
+          <%= f.text_field :tag_list, value: @post_image.tag_list.join(','), class: "form-control" %>
+        </div>
+        <div class = "spot">
+          <%= f.fields_for :spot do |s| %>
+            <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title' %>
+            <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
+            <input onclick= "codeAddress()", type= "button", value= "検索する">
+        <div class="map" id="map" style="height: 320px; width: 640px;"></div>
+          <% end %>
+        </div>
+        <%= f.submit '投稿', class: "btn btn-outline-dark" %>
+      </div>
+    </div>
   <% end %>
 </main>
 
