@@ -37,10 +37,16 @@
     </div>
       <div class="sidebar">
     <div class="sidebar__item sidebar__item--fixed">
+      <h4>TagTag</h4>
+
+
       <h4>Ranking</h4>
-      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br>
-      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br><br>
-      aiueoaiueoaiueoaiueoaiueoaiueoaiueo<br><br><br><br><br>
+      <% @all_ranks.each.with_index(1) do |post_image, i| %>
+      第
+      <%= i %>
+      位
+     <%= post_image.title %>
+     <% end %>
     </div>
     </div>
 </div>

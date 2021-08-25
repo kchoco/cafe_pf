@@ -4,6 +4,9 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new
     @post_image.tag_list.add('awesome', "slick")      #タグを追加
     @post_image.tag_list.remove('awesome', "slick")   #タグを削除
+    gon.lat = ""
+    gon.lng = ""
+    @post_image.build_spot
   end
 
   def create
@@ -18,10 +21,15 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all.order(created_at: :desc)
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
   end
 
   def show
     @post_image = PostImage.find(params[:id])
+    @lat = @post_image.spot.latitude
+    @lng = @post_image.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
     @post_comment = PostComment.new
     @post_comment.save
     render :show
@@ -35,6 +43,7 @@ class PostImagesController < ApplicationController
 
   def search
     @post_images = PostImage.search(params[:keyword])
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
     @keyword = params[:keyword]
     render 'index'
   end
@@ -43,7 +52,7 @@ class PostImagesController < ApplicationController
 private
 
   def post_image_params
-    params.require(:post_image).permit(:title, :image, :introduction, :evaluation, :tag_list, :rate)
+    params.require(:post_image).permit(:title, :image, :introduction, :evaluation, :tag_list, :rate, :latitude, :longitude, spot_attributes: [:address])
   end
 
 end
