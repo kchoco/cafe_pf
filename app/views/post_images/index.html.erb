@@ -37,15 +37,19 @@
     </div>
       <div class="sidebar">
     <div class="sidebar__item sidebar__item--fixed">
-      <h4>TagTag</h4>
-
+      <h4>Tag</h4>
+        <% @post_images.each do |post_image| %>
+          <p><%= raw(post_image.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+        <% end %>
 
       <h4>Ranking</h4>
       <% @all_ranks.each.with_index(1) do |post_image, i| %>
       第
       <%= i %>
       位
-     <%= post_image.title %>
+      <%= link_to post_image_path(post_image.id) do %>
+     <p><%= post_image.title %>/<%= post_image.user.nickname %></p>
+     <% end %>
      <% end %>
     </div>
     </div>
