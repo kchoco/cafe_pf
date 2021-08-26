@@ -22,6 +22,11 @@ class PostImagesController < ApplicationController
   def index
     @post_images = PostImage.all.order(created_at: :desc)
     @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
+    if params[:tag]
+      @post_images = PostImage.tagged_with(params[:tag])
+    else
+      @post_images = PostImage.all.order(created_at: :desc)
+    end
   end
 
   def show
@@ -52,7 +57,7 @@ class PostImagesController < ApplicationController
 private
 
   def post_image_params
-    params.require(:post_image).permit(:title, :image, :introduction, :evaluation, :tag_list, :rate, :latitude, :longitude, spot_attributes: [:address])
+    params.require(:post_image).permit(:title, :image, :introduction, :evaluation,:content, :tag_list, :rate, :latitude, :longitude, spot_attributes: [:address])
   end
 
 end
