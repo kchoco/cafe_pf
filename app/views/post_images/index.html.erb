@@ -39,7 +39,9 @@
     <div class="sidebar__item sidebar__item--fixed">
       <h4>Tag</h4>
         <% @post_images.each do |post_image| %>
-          <p><%= raw(post_image.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+        <% @tags.each do |post_image| %>
+          <p><%#= raw(post_image.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+        <% end %>
         <% end %>
 
       <h4>Ranking</h4>
