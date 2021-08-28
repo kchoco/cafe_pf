@@ -69,7 +69,7 @@
           });
           </script>
           </p>
-          <%= raw(@post_image.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+          <%= raw(@post_image.tag_list.map { |t| link_to t, tag_path(t) }) %></p>
 </p>
 
           </div>
