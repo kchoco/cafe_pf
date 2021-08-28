@@ -23,8 +23,8 @@
 //= require activestorage
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function () {
-$(function() {
+
+$(document).ready(function() {
     $('.a').slick({
         dots: true,
         fade: true,
@@ -33,5 +33,4 @@ $(function() {
         autoplaySpeed: 2500,
         infinite: true
     });
-});
 });
