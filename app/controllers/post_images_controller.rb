@@ -4,8 +4,8 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new
     @post_image.tag_list.add('awesome', "slick")      #タグを追加
     @post_image.tag_list.remove('awesome', "slick")   #タグを削除
-    gon.lat = ""
-    gon.lng = ""
+    gon.lat = ""    #地図機能
+    gon.lng = ""    #地図機能
     @post_image.build_spot
   end
 

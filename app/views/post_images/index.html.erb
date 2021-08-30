@@ -27,6 +27,7 @@
       <center><%= link_to post_image_path(post_image.id) do %>
       <%= attachment_image_tag post_image, :image, size: "300x200" %></center>
       <% end %>
+      <%= raw(post_image.tag_list.map {|t| link_to t, tag_path(t)}) %>
       <div class="ml-4">
       <p style="text-align: right">
         <%= link_to "#{post_image.post_comments.count}", post_image_path(post_image.id), class: "far fa-comments" %></div>
@@ -43,14 +44,14 @@
         <% end %>
 
       <h4>Ranking</h4>
-      <% @all_ranks.each.with_index(1) do |post_image, i| %>
-      第
-      <%= i %>
-      位
-      <%= link_to post_image_path(post_image.id) do %>
-     <p><%= post_image.title %>/<%= post_image.user.nickname %></p>
-     <% end %>
-     <% end %>
+        <% @all_ranks.each.with_index(1) do |post_image, i| %>
+          第
+          <%= i %>
+          位
+          <%= link_to post_image_path(post_image.id) do %>
+          <p><%= post_image.title %>/<%= post_image.user.nickname %></p>
+          <% end %>
+        <% end %>
     </div>
     </div>
 </div>
