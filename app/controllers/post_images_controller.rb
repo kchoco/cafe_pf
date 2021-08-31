@@ -27,7 +27,7 @@ class PostImagesController < ApplicationController
     else
       @post_images = PostImage.all.order(created_at: :desc)
     end
-    @tags = Tag.limit(10).distinct.order(created_at: :desc)
+    @tags = Tag.limit(5).distinct.order(created_at: :desc)
   end
 
   def show

@@ -7,11 +7,11 @@ class User < ApplicationRecord
   attachment :profile_image
 
 #画像投稿機能
-  has_many :post_images, dependent: :destroy
+  has_many :post_images, :dependent => :destroy
 #いいね機能
-  has_many :favorites, dependent: :destroy
+  has_many :favorites, :dependent => :destroy
 #コメント投稿機能
-  has_many :post_comments, dependent: :destroy
+  has_many :post_comments, :dependent => :destroy
 
 #退会処理
   def active_for_authentication?

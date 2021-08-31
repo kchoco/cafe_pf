@@ -5,11 +5,11 @@ class PostImage < ApplicationRecord
 
   validates :image, {presence: true}
 
-  has_many :favorites, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
+  has_many :favorites, :dependent => :destroy
+  has_many :post_comments, :dependent => :destroy
 
   #地図機能
-  has_one :spot, dependent: :destroy
+  has_one :spot, :dependent => :destroy
   accepts_nested_attributes_for :spot
 
   #いいね機能
