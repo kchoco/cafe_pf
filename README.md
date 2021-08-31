@@ -19,6 +19,7 @@ un caféとはフランス語で「コーヒー」や「カフェ」を意味し
 WBS:https://docs.google.com/spreadsheets/d/1bAsVf7N2zq5_hIv3MLpaTAT4-YuMNOWQSUXQnaNvIAc/edit?usp=sharing<br>
 アプリケーション定義書：https://docs.google.com/spreadsheets/d/1-rZ3gOLd_q_rmgHUTm9OEM4hGLGjevj2/edit?usp=sharing&ouid=100148423541060748425&rtpof=true&sd=true<br>
 フレームワーク：https://drive.google.com/file/d/12CZtQmj_meMrm7KH_9Q-BFhYTL4MPEjK/view?usp=sharing<br>
+ER図：https://drive.google.com/file/d/1dLQr5mzj5BVKO3gUG97TZbK_tl_2o_dF/view?usp=sharing<br>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/151OwW9nRP5ld6AaCWFiaAy3IAxusMMdAI2m6yvQghJ0/edit?usp=sharing
