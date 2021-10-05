@@ -22,10 +22,10 @@ class PostImagesController < ApplicationController
   def index
     @post_images = PostImage.all.order(created_at: :desc)
     @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
-    if params[:tag]
-      @post_images = PostImage.tagged_with(params[:tag])
+      @post_images = if params[:tag]
+      PostImage.tagged_with(params[:tag])
     else
-      @post_images = PostImage.all.order(created_at: :desc)
+      PostImage.all.order(created_at: :desc)
     end
     @tags = Tag.limit(5).distinct.order(created_at: :desc)
   end
