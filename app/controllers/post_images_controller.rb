@@ -4,8 +4,7 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new
     @post_image.tag_list.add('awesome', "slick")      #タグを追加
     @post_image.tag_list.remove('awesome', "slick")   #タグを削除
-    gon.lat = ""    #地図機能
-    gon.lng = ""    #地図機能
+    set_gon('','')   #地図機能
     @post_image.build_spot
   end
 
@@ -34,8 +33,7 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
     @lat = @post_image.spot.latitude
     @lng = @post_image.spot.longitude
-    gon.lat = @lat
-    gon.lng = @lng
+    set_gon(@lat,@lng)
     @post_comment = PostComment.new
     @post_comment.save
     render :show
@@ -60,6 +58,11 @@ private
 
   def post_image_params
     params.require(:post_image).permit(:title, :image, :introduction, :evaluation,:content, :tag_list, :rate, :latitude, :longitude, spot_attributes: [:address])
+  end
+
+  def set_gon(lat,lng)
+    gon.lat = lat
+    gon.lng = lng
   end
 
 end
