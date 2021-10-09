@@ -20,7 +20,7 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all.order(created_at: :desc)
-    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
+    @all_ranks = PostImage.most_favorite
       @post_images = if params[:tag]
       PostImage.tagged_with(params[:tag])
     else
@@ -47,7 +47,7 @@ class PostImagesController < ApplicationController
 
   def search
     @post_images = PostImage.search(params[:keyword])
-    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
+    @all_ranks = PostImage.most_favorite
     @tags = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
     @keyword = params[:keyword]
     render 'index'

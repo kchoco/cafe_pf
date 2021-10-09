@@ -24,4 +24,11 @@ class PostImage < ApplicationRecord
   #タグ付け
   acts_as_taggable
   acts_as_taggable_on :skills, :interests
+
+  #ランキング機能呼び出し
+  def self.most_favorite(n = 3)
+  where(
+    id: Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(n).pluck(:post_image_id)
+  )
+  end
 end
